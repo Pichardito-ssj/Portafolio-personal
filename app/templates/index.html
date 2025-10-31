@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} - {{ name }}</title>
+  <link rel="stylesheet" href="/static/css/dark.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="/static/images/logo.png" alt="Logo" class="logo">
+        <span class="brand-name">{{ name }}</span>
+      </div>
+      <div class="nav-right">
+        <a href="#projects">Proyectos</a>
+        <a href="#contact">Contacto</a>
+        <a href="/static/downloads/ProyectoA.rar" class="btn">Descargar .rar</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-inner">
+      <div class="hero-left">
+        <h1>{{ name }}</h1>
+        <p class="role">{{ role }}</p>
+        <p class="bio">{{ bio }}</p>
+        <div class="actions">
+          <a href="#projects" class="btn">Ver proyectos</a>
+          <a href="#contact" class="btn ghost">Contacto</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="/static/images/foto.jpg" alt="Foto de {{ name }}" class="perfil">
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section id="projects" class="section">
+      <h2>Proyectos destacados</h2>
+      <div class="grid">
+        {% for p in projects %}
+        <article class="card">
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.desc }}</p>
+          <a href="{{ p.file }}" class="link-download" download>📦 Descargar</a>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contacto</h2>
+      <p>Email: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+      <p>Teléfono: {{ contact.phone }}</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© {{ name }} - Portafolio</p>
+    </div>
+  </footer>
+</body>
+</html>
